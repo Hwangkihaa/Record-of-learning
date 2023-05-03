@@ -1,0 +1,52 @@
+// K-NN Classifier
+
+import matplotlib.pyplot as plt
+
+from sklearn import datasets, metrics
+from sklearn.model_selection import train_test_split
+#Read Datasets
+
+digits = datasets.load_digits()
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+#Image Flattening
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=6)
+# Model, Learning
+
+X_train, X_test, y_train, y_test = train_test_split(data, digits.target, test_size=0.2)
+#Training and learning data
+
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+# Predict
+
+disp = metircs.plot_confusion_matrix(knn, X_test, y_test)
+plt.show()
+
+
+
+// SVM & K-NN
+
+from sklearn import datasets, metrics
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.neighbors import KNeighborsClassifier
+
+digits = dataets.load_digits()
+data = digits.images.reshape((1797,64))
+
+X_train, X_test, y_train, y_test = train_test_train(data, digits.target, test_size=0.2)
+
+s=svm.SVC(gamma = 0.001, C = 10)
+s.fit(X_train, y_train)
+pred = s.predict(X_test)
+scores = metrics.accuracy_score(y_test, pred)
+print("svm score", scores)
+
+knn=KNeighborsClassifier(n_neighbors=5)
+knn.kit(X_train, y_train)
+knn_pred = knn.predict(X_test)
+scoresknn = metrics.accuracy_score(y_test, knn_pred)
+print("knn score", scoresknn)
