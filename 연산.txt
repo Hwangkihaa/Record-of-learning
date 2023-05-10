@@ -1,0 +1,101 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int num1 = 12;
+	int num2 = 12;
+
+	printf("num1: %d \n", num1);
+	printf("num1++: %d \n", num1++); // 후위 증가
+	printf("num1: %d \n", num1);
+
+	printf("num2: %d \n", num2);
+	printf("++num2: %d \n", ++num2); // 전위 증가
+	printf("num2: %d \n", num2);
+
+	return 0;
+}
+
+실행결과 ->
+num1: 12
+num1++ : 12
+num1 : 13
+num2 : 12
+++num2 : 13
+num2 : 13
+
+#include <stdio.h>
+
+int main(void)
+{
+	int num1 = 10;
+	int num2 = (num1--) + 2;
+
+	printf("num1: %d \n", num1);
+	printf("num2: %d \n", num2);
+
+	return 0;
+}
+
+실행결과 ->
+num1: 9
+num2: 12
+
+num1의 값이 감소한 상태에서 num2의 연산이 진행되는 것이 아닌,
+선 연산이 이루어져야 후 감소가 이루어진다.
+
+
+#include <stdio.h>
+
+int main(void)
+{
+	int num1 = 15; //00001111
+	int num2 = 20; //00010100
+	int num3 = num1 & num2; //00000100
+	printf("AND 연산의 결과: %d", num3);
+
+	return 0;
+}
+->
+AND 연산의 결과: 4
+
+int main(void)
+{
+	int num1 = 15; //00001111
+	int num2 = 20; //00010100
+	int num3 = num1 | num2; //00011111
+	printf("OR 연산의 결과: %d", num3);
+
+	return 0;
+}
+->
+OR 연산의 결과: 31
+
+** 2의보수
+11111111 11110000 의 2의 보수는
+처음 나오는 1까지는 두고 그 다음 자리는 모두 NOT으로 바꾸어 준다
+00000000 00010000 = 16인데 이는 양의 정수이므로 -16이라는 결론이 나온다.
+
+** 비트의 이동
+int num1 = 00001111  (15)
+int result1 = num1<<1; //00011110(30)
+int result2 = num1<<2; //01111000(120)
+int result3 = num1>>3; //00001111(15)
+
+
+** NOT
+#include <stdio.h>
+
+int main(void)
+{
+	int num;
+	printf("정수 입력:");
+	scanf_s("%d", &num);
+	num = ~num;
+	num = num + 1;
+	printf("%d", num);
+
+	return 0;
+}
+
+
